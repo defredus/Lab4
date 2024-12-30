@@ -1,0 +1,98 @@
+﻿@model NewsPortalBLL.DTO.CommentaryDTO
+
+@{
+    ViewData["Title"] = "Delete Comment";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-danger text-white text-center">
+            <h1>Delete Comment</h1>
+        </div>
+        <div class="card-body bg-light">
+            <p class="fw-bold">Are you sure you want to delete this comment?</p>
+            <p><strong>Content:</strong> @Model.content</p>
+
+            <form asp-action="DeleteConfirmed" method="post">
+                <input type="hidden" asp-for="Id" />
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-danger me-3">Yes, Delete</button>
+                    <a href="/Commentary/Index" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+
+            @if (ViewData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger mt-4">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Общие стили для фона и элементов */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fa;
+    }
+
+    .container {
+        max-width: 900px;
+    }
+
+    .card {
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        background-color: #ffffff;
+    }
+
+    .card-header {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .card-body {
+        border-radius: 0 0 10px 10px;
+        padding: 25px;
+    }
+
+    /* Для кнопок */
+    .btn {
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    /* Стиль для успешных и ошибочных сообщений */
+    .alert {
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+</style>

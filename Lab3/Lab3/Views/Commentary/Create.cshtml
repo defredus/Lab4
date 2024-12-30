@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Create Comment";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white text-center">
+            <h1>Create Comment</h1>
+        </div>
+        <div class="card-body bg-light">
+            <form asp-action="Create" method="post">
+                <div class="form-group">
+                    <label for="UserId">User ID</label>
+                    <input type="number" name="userId" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Content">Content</label>
+                    <textarea name="content" class="form-control"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add Comment</button>
+                <a href="/Commentary/Index" class="btn btn-secondary">Cancel</a>
+            </form>
+
+            @if (ViewData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success mt-3">
+                    @ViewData["SuccessMessage"]
+                </div>
+            }
+
+            @if (ViewData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger mt-3">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 1000px;
+    }
+
+    .card {
+        border-radius: 10px;
+    }
+
+    .card-header {
+        border-radius: 10px 10px 0 0;
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .card-body {
+        border-radius: 0 0 10px 10px;
+        padding: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #4e555b;
+        }
+
+    .alert {
+        padding: 10px;
+        border-radius: 8px;
+    }
+</style>

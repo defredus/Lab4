@@ -1,0 +1,135 @@
+﻿@{
+    ViewData["Title"] = "Create Article";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+            <h1>Create Article</h1>
+        </div>
+        <div class="card-body bg-light">
+            <form asp-action="Create" method="post">
+                <div class="form-group mb-4">
+                    <label for="Title" class="form-label fw-bold">Title</label>
+                    <input name="title" class="form-control border-info" placeholder="Enter article title" />
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="Content" class="form-label fw-bold">Content</label>
+                    <textarea name="content" class="form-control border-info" rows="5" placeholder="Write your article content here"></textarea>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="PublicationDate" class="form-label fw-bold">Publication Date</label>
+                    <input name="publicationDate" class="form-control border-info" type="date" />
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success me-2">Create</button>
+                    <a href="/Article/Index" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+
+            @if (ViewData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success mt-4">
+                    @ViewData["SuccessMessage"]
+                </div>
+            }
+
+            @if (ViewData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger mt-4">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
+
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <div class="alert alert-danger mt-4">@error.ErrorMessage</div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Общие стили для фона и элементов */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fa;
+    }
+
+    .container {
+        max-width: 900px;
+    }
+
+    .card {
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        background-color: #ffffff;
+    }
+
+    .card-header {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .card-body {
+        border-radius: 0 0 10px 10px;
+        padding: 25px;
+    }
+
+    /* Цвет рамки для формы */
+    .form-control {
+        border: 2px solid #4CAF50;
+        border-radius: 8px;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+    }
+
+    /* Для кнопок */
+    .btn {
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    /* Стиль для успешных и ошибочных сообщений */
+    .alert {
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+</style>

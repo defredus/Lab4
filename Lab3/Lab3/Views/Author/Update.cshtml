@@ -1,0 +1,129 @@
+﻿@{
+    ViewData["Title"] = "Update Author";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-info text-white text-center">
+            <h1>Update Author</h1>
+        </div>
+        <div class="card-body bg-light">
+            <form asp-action="Update" method="post">
+                <!-- Скрытые поля для id -->
+                <input type="hidden" name="id" value="@Model.Id" />
+
+                <div class="form-group mb-4">
+                    <label for="Username" class="fw-bold">Username</label>
+                    <input type="text" name="username" value="@Model.Username" class="form-control" />
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="Email" class="fw-bold">Email</label>
+                    <input type="email" name="email" value="@Model.Email" class="form-control" />
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="@Url.Action("Index", "User")" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+
+            @if (ViewData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success mt-3">
+                    @ViewData["SuccessMessage"]
+                </div>
+            }
+
+            @if (ViewData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger mt-3">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Общие стили для фона и элементов */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fa;
+    }
+
+    .container {
+        max-width: 900px;
+    }
+
+    .card {
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        background-color: #ffffff;
+    }
+
+    .card-header {
+        border-radius: 10px 10px 0 0;
+        background-color: #17a2b8;
+        color: #fff;
+    }
+
+    .card-body {
+        border-radius: 0 0 10px 10px;
+        padding: 25px;
+    }
+
+    /* Стили для полей ввода */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .fw-bold {
+        font-weight: bold;
+    }
+
+    /* Стили для кнопок */
+    .btn {
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    /* Стиль для успешных и ошибочных сообщений */
+    .alert {
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+</style>
